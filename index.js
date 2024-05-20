@@ -22,16 +22,19 @@ const questions = [{
     name: 'textColor'
 }]
 
-function selectShape(shape) {
+function selectShape(shape,color) {
     switch (shape) {
         case 'Triangle':
-            return Triangle.render();
+            const triangle = new Triangle(color)
+            return triangle.render();
             break
         case 'Square':
-            return Square.render();
+            const square = new Square(color)
+            return square.render();
             break
         case 'Circle':
-            return Circle.render();
+            const circle = new Circle(color)
+            return circle.render();
             break
     }
 }
@@ -39,7 +42,7 @@ function selectShape(shape) {
 function generateSVG({ logoText, textColor, logoShape, shapeColor }) {
     return ` <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
     ${selectShape(logoShape, shapeColor)}
-    <text x="50" y="60" text-anchor="middle" fill="${textColor}" font-size="25">${logoText}</text>
+    <text x="150" y="125" text-anchor="middle" fill="${textColor}" font-size="25">${logoText}</text>
     </svg>`;
 };
 
@@ -66,3 +69,5 @@ function init() {
 }
 
 init();
+
+module.exports = validateText
